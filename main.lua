@@ -1,11 +1,11 @@
-local http_request = syn and syn.request or request
+local http_request = (syn and syn.request) or (request) or (http and http.request)
 local httpService = game:GetService("HttpService")
 
 local dataToSend = {
-    key = getgenv().key,
-    name = getgenv().name,
-    clientId = game:GetService("RbxAnalyticsService"):GetClientId()
+    key = getgenv().key or
+    name = getgenv().name 
 }
+
 
 local response = http_request({
     Url = "https://apikey-formobil.onrender.com/check-key-mobil",
